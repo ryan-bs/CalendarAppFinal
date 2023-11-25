@@ -1,16 +1,17 @@
 ﻿@page
 @model LoginModel
 
-@{
+@* @{
     ViewData["Title"] = "Log in";
-}
+} *@
 
 <h1>@ViewData["Title"]</h1>
 <div class="row">
-    <div class="col-md-4">
+
+    
         <section>
             <form id="account" method="post">
-                <h2>Use a local account to log in.</h2>
+                <p class="frase">Acesse seu <br />calendário</p>
                 <hr />
                 <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
                 <div class="form-floating mb-3">
@@ -18,45 +19,45 @@
                     <label asp-for="Input.Email" class="form-label">Email</label>
                     <span asp-validation-for="Input.Email" class="text-danger"></span>
                 </div>
-                <div class="form-floating mb-3">
-                    <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" />
-                    <label asp-for="Input.Password" class="form-label">Password</label>
-                    <span asp-validation-for="Input.Password" class="text-danger"></span>
-                </div>
                 <div class="checkbox mb-3">
                     <label asp-for="Input.RememberMe" class="form-label">
                         <input class="form-check-input" asp-for="Input.RememberMe" />
                         @Html.DisplayNameFor(m => m.Input.RememberMe)
                     </label>
                 </div>
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" />
+                    <label asp-for="Input.Password" class="form-label">Senha</label>
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+
                 <div>
                     <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
                 </div>
                 <div>
                     <p>
-                        <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
-                    </p>
-                    <p>
-                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
-                    </p>
-                    <p>
-                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
+                        <a id="forgot-password" asp-page="./ForgotPassword">Esqueceu sua senha?</a>
                     </p>
                 </div>
+            <div>
+                <p>
+                    <a id="forgot-password" asp-page="./Register">Cadastre-se?</a>
+                </p>
+            </div>
             </form>
         </section>
     </div>
     <div class="col-md-6 col-md-offset-2">
         <section>
-            <h3>Use another service to log in.</h3>
-            <hr />
+
+         
             @{
                 if ((Model.ExternalLogins?.Count ?? 0) == 0)
                 {
                     <div>
                         <p>
-                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
-                            about setting up this ASP.NET application to support logging in via external services</a>.
+                            <a href="https://go.microsoft.com/fwlink/?LinkID=532715">
+                            </a>.
                         </p>
                     </div>
                 }
@@ -76,8 +77,129 @@
             }
         </section>
     </div>
-</div>
+
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
+
+<style>
+    body {
+        background-image: url('../Images/imgcalendario1200100.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+/*     .row {
+        width: 411px;
+        height: 512px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        padding: 20px;
+        /* margin-top: -40px; */ /* Adjusting the margin for centering 
+    } */
+
+    /* .container {
+        width: 411px;
+        height: 512px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        padding: 20px;
+        margin-top: -40px; /* Adjusting the margin for centering 
+    } */
+
+   
+     .container {
+        width: 411px;
+        height: 512px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        padding: 20px;
+        margin-top: -40px; /* Adjusting the margin for centering  */
+       
+    } 
+
+    .frase {
+        font-family: 'Calibri', sans-serif;
+        font-weight: 300;
+        font-size: 45px;
+        text-align: center;
+        margin: 0;
+        margin-top: 5px;
+    }
+
+
+    .btn {
+        width: 370px;
+        height: 40px;
+        background-color: #C60000;
+        color: #fff;
+        border: 1px solid #000;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-top: 40px;
+    }
+
+    .btn-secondary {
+        width: 30%;
+        background-color: #fff;
+        color: #C60000;
+        border: 1px solid #000;
+        border-radius: 5px;
+        padding: 5px 10px;
+        font-size: 14px;
+        cursor: pointer;
+        margin-top: 50px;
+    }
+
+    .btn:hover {
+        background-color: #9C0000;
+    }
+
+    .text-danger {
+        color: red;
+        position: absolute;
+        top: 57px;
+        font-size: .8rem;
+    }
+
+    /* Additional styles for link */
+    .link-style {
+        color: #C60000;
+        text-decoration: underline;
+        display: block;
+        margin-top: 10px;
+    }
+
+    .checkbox {
+        position: relative;
+    }
+
+        .checkbox label {
+            position: absolute;
+            top: 65px; /* Ajuste a posição vertical conforme necessário */
+            left: 5px; /* Ajuste a posição horizontal conforme necessário */
+            font-size: 0.875rem; /* Ajuste o tamanho da fonte conforme necessário */
+            color: #000; /* Cor do texto */
+        }
+        
+        a{
+            color: #C60000;
+        }
+</style>
