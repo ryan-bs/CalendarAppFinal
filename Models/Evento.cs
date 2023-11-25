@@ -13,6 +13,26 @@
         public virtual Etiqueta Etiqueta { get; set; }
         #endregion
 
+        public Evento(IFormCollection form, Etiqueta etiqueta, User user)
+        {
+            User = user;
+            Nome = form["Event.Name"].ToString();
+            Descricao = form["Event.Description"].ToString();
+            StartTime = DateTime.Parse(form["Event.StartTime"].ToString());
+            EndTime = DateTime.Parse(form["Event.EndTime"].ToString());
+            Etiqueta = etiqueta;
+        }
+
+        public void UpdateEvento(IFormCollection form, Etiqueta etiqueta, User user)
+        {
+            User = user;
+            Nome = form["Event.Name"].ToString();
+            Descricao = form["Event.Description"].ToString();
+            StartTime = DateTime.Parse(form["Event.StartTime"].ToString());
+            EndTime = DateTime.Parse(form["Event.EndTime"].ToString());
+            Etiqueta = etiqueta;
+        }
+
         public Evento()
         {
         }

@@ -1,6 +1,6 @@
 using CalendarAppFinal.Data;
+using CalendarAppFinal.Interfaces;
 using CalendarAppFinal.Models;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +13,7 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddScoped<IDAL, DAL>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
