@@ -16,20 +16,20 @@
         public Evento(IFormCollection form, Etiqueta etiqueta, User user)
         {
             User = user;
-            Nome = form["Event.Name"].ToString();
-            Descricao = form["Event.Description"].ToString();
-            StartTime = DateTime.Parse(form["Event.StartTime"].ToString());
-            EndTime = DateTime.Parse(form["Event.EndTime"].ToString());
+            Nome = form["Evento.Nome"].ToString();
+            Descricao = form["Evento.Descricao"].ToString();
+            StartTime = DateTime.Parse(form["Evento.StartTime"].ToString());
+            EndTime = DateTime.Parse(form["Evento.EndTime"].ToString());
             Etiqueta = etiqueta;
         }
 
         public void UpdateEvento(IFormCollection form, Etiqueta etiqueta, User user)
         {
             User = user;
-            Nome = form["Event.Name"].ToString();
-            Descricao = form["Event.Description"].ToString();
-            StartTime = DateTime.Parse(form["Event.StartTime"].ToString());
-            EndTime = DateTime.Parse(form["Event.EndTime"].ToString());
+            Nome = form["Evento.Nome"].ToString();
+            Descricao = form["Evento.Descricao"].ToString();
+            StartTime = DateTime.Parse(form["Evento.StartTime"].ToString());
+            EndTime = DateTime.Parse(form["Evento.EndTime"].ToString());
             Etiqueta = etiqueta;
         }
 
