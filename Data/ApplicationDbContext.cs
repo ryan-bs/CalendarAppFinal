@@ -32,5 +32,8 @@ namespace CalendarAppFinal.Data
                 optionsBuilder.UseSqlServer(connectionString);
             }
         }
+
+        public DbSet<Evento> Eventos { get; set; }
+        public DbSet<Etiqueta> Etiquetas { get; set; }
     }
 }
