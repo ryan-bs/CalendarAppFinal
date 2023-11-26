@@ -8,35 +8,27 @@
 <h1>ETIQUETAS</h1>
 
 <p>
-    <a asp-action="Create">Criar nova etiqueta</a>
+    <a asp-action="Create" class="btn btn-danger">Criar nova etiqueta</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nome)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-<style>
-    a{
-        color: #C60000;
-    }
-    a:hover{
-        color: darkred;
-    }
-</style>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Nome)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Nome)</td>
+                    <td>
+                        <a class="btn btn-danger" asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

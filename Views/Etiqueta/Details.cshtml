@@ -7,19 +7,20 @@
 
 <h1>Detalhes</h1>
 
+<br />
+
 <div>
-    <h4>Etiqueta</h4>
+    <h4>Detalhes da etiqueta</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Nome)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Nome)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Editar</a> |
-    <a asp-action="Index">Voltar a lista</a>
+    <a asp-action="Index" class="btn btn-secondary">Voltar a lista de etiquetas</a>
 </div>

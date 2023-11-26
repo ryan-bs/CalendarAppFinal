@@ -1,57 +1,51 @@
 ﻿@model CalendarAppFinal.Models.Etiqueta
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Criar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Criar</h1>
+<h1 class="text-center">Criar etiqueta</h1>
 
-<h4>Etiqueta</h4>
+
 <hr />
 
 @if (ViewData["Alert"] != null)
 {
-    <h4>@ViewData["Alert"]</h4>
+    <div class="alert alert-info" role="alert">
+        @ViewData["Alert"]
+    </div>
 }
+
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
+    <div class="col-md-6 mx-auto">
+        <form asp-action="Create" class="my-form">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="Nome" class="control-label"></label>
                 <input asp-for="Nome" class="form-control" />
                 <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary btn-vermelho" />
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-danger">Criar</button>
+                <a asp-action="Index" class="btn btn-danger ml-2">Voltar para a Lista</a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Voltar a lista</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
-<style>
-    .btn-vermelho {
-        background-color: #C60000; /* Vermelho */
-        border-color: #000; /* Cor da borda vermelha, se necessário */
-        /* Outros estilos opcionais */
-        color: #fff; /* Cor do texto */
-    }
 
-        .btn-vermelho:hover{
-            background-color: darkred;
-        }
-    a{
-        color: #C60000;
-    }
-    a:hover{
-        color:darkred;
+<style>
+
+    .my-form {
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #f9f9f9;
     }
 </style>
