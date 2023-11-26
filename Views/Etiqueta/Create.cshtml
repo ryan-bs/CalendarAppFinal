@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
+<h1>Criar</h1>
 
 <h4>Etiqueta</h4>
 <hr />
@@ -24,16 +24,34 @@
                 <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary btn-vermelho" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Voltar a lista</a>
 </div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+<style>
+    .btn-vermelho {
+        background-color: #C60000; /* Vermelho */
+        border-color: #000; /* Cor da borda vermelha, se necessário */
+        /* Outros estilos opcionais */
+        color: #fff; /* Cor do texto */
+    }
+
+        .btn-vermelho:hover{
+            background-color: darkred;
+        }
+    a{
+        color: #C60000;
+    }
+    a:hover{
+        color:darkred;
+    }
+</style>
