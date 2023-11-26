@@ -80,14 +80,14 @@ namespace CalendarAppFinal.Data
         #endregion
 
         #region [Read]
-        public List<Etiqueta> GetEtiquetas()
-        {
-            return _context.Etiquetas.ToList();
-        }
-
         public Etiqueta GetEtiqueta(int id)
         {
             return _context.Etiquetas.Find(id);
+        }
+
+        public List<Etiqueta> GetEtiquetas()
+        {
+            return _context.Etiquetas.ToList();
         }
         #endregion
 

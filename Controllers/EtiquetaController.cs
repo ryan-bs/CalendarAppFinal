@@ -2,9 +2,11 @@
 using CalendarAppFinal.Models;
 using CalendarAppFinal.Interfaces;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CalendarAppFinal.Controllers
 {
+    [Authorize]
     public class EtiquetaController : Controller
     {
         private readonly IDAL _dal;
@@ -53,22 +55,17 @@ namespace CalendarAppFinal.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nome")] Etiqueta etiqueta)
         {
-            //if (ModelState.IsValid)
-            //{
-                try
-                {
-                    _dal.CreateEtiqueta(etiqueta);
-                    TempData["Alert"] = "Parbéns! Você criou uma etiqueta para: " + etiqueta.Nome;
-                    return RedirectToAction(nameof(Index));
-                }
-                catch (Exception ex)
-                {
-                    ViewData["Alert"] = "Um erro ocorreu: " + ex.Message;
-                    return View(etiqueta);
-                }
-
-            //}
-            //return View(etiqueta);
+            try
+            {
+                _dal.CreateEtiqueta(etiqueta);
+                TempData["Alert"] = "Parbéns! Você criou uma etiqueta para: " + etiqueta.Nome;
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                ViewData["Alert"] = "Um erro ocorreu: " + ex.Message;
+                return View(etiqueta);
+            }
         }
     }
 }

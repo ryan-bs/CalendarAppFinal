@@ -2,16 +2,22 @@
 using CalendarAppFinal.Interfaces;
 using System.Security.Claims;
 using CalendarAppFinal.Models.ViewModel;
+using Microsoft.AspNetCore.Identity;
+using CalendarAppFinal.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CalendarAppFinal.Controllers
 {
+    [Authorize]
     public class EventoController : Controller
     {
         private readonly IDAL _dal;
+        private readonly UserManager<User> _usermanager;
 
-        public EventoController(IDAL dal)
+        public EventoController(IDAL dal, UserManager<User> usermanager)
         {
             _dal = dal;
+            _usermanager = usermanager;
         }
 
         // GET: Evento
@@ -29,15 +35,12 @@ namespace CalendarAppFinal.Controllers
         public IActionResult Details(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
             var evento = _dal.GetEvento((int)id);
+
             if (evento == null)
-            {
                 return NotFound();
-            }
 
             return View(evento);
         }
@@ -45,7 +48,7 @@ namespace CalendarAppFinal.Controllers
         // GET: Evento/Create
         public IActionResult Create()
         {
-            return View(new EventoViewModel(_dal.GetEtiquetas())); //User.FindFirstValue(ClaimTypes.NameIdentifier))
+            return View(new EventoViewModel(_dal.GetEtiquetas(), User.FindFirstValue(ClaimTypes.NameIdentifier)));
         }
 
         // POST: Evento/Create
@@ -76,10 +79,12 @@ namespace CalendarAppFinal.Controllers
                 return NotFound();
 
             var evento = _dal.GetEvento((int)id);
+
             if (evento == null)
                 return NotFound();
 
-            var vm = new EventoViewModel(evento, _dal.GetEtiquetas()); //User.FindFirstValue(ClaimTypes.NameIdentifier)
+            var vm = new EventoViewModel(evento, _dal.GetEtiquetas(), User.FindFirstValue(ClaimTypes.NameIdentifier));
+
             return View(vm);
         }
 
@@ -99,7 +104,7 @@ namespace CalendarAppFinal.Controllers
             catch (Exception ex)
             {
                 ViewData["Alert"] = "Um erro ocorreu: " + ex.Message;
-                var vm = new EventoViewModel(_dal.GetEvento(id), _dal.GetEtiquetas());//, User.FindFirstValue(ClaimTypes.NameIdentifier)
+                var vm = new EventoViewModel(_dal.GetEvento(id), _dal.GetEtiquetas(), User.FindFirstValue(ClaimTypes.NameIdentifier));
                 return View(vm);
             }
         }
