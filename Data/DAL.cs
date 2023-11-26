@@ -63,7 +63,8 @@ namespace CalendarAppFinal.Data
 
         public List<Evento> GetMeusEventos(string userId)
         {
-            return _context.Eventos.Where(x => x.User.Id == userId).ToList();
+            var meusEventos = _context.Eventos.ToList();
+            return meusEventos;
         }
         #endregion
 

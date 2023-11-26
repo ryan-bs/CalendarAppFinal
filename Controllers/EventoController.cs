@@ -5,6 +5,7 @@ using CalendarAppFinal.Models.ViewModel;
 using Microsoft.AspNetCore.Identity;
 using CalendarAppFinal.Models;
 using Microsoft.AspNetCore.Authorization;
+using CalendarAppFinal.Controllers.ActionFilters;
 
 namespace CalendarAppFinal.Controllers
 {
@@ -72,7 +73,7 @@ namespace CalendarAppFinal.Controllers
         }
 
         // GET: Evento/Edit/5
-        //[UserAccessOnly]
+        [UserAcessOnly]
         public IActionResult Edit(int? id)
         {
             if (id == null)
